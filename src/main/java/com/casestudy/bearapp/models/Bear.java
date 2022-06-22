@@ -1,6 +1,7 @@
 package com.casestudy.bearapp.models;
 
 import lombok.*;
+import lombok.experimental.FieldDefaults;
 
 import javax.persistence.*;
 @AllArgsConstructor
@@ -9,6 +10,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @ToString
+@FieldDefaults(level = AccessLevel.PRIVATE)
 @Entity
 @Table(name = "bears")
 public class Bear {
@@ -22,6 +24,9 @@ public class Bear {
     @NonNull
     int baseDef;
 
+    /*@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
+    @JoinColumn(name = "user_fk", referencedColumnName = "id")
+    User user;*/
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
     @JoinColumn(name = "weap_fk", referencedColumnName = "id")
     Weapon weapon;

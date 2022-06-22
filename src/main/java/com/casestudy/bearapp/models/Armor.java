@@ -1,5 +1,6 @@
 package com.casestudy.bearapp.models;
 import lombok.*;
+import lombok.experimental.FieldDefaults;
 
 import javax.persistence.*;
 import java.util.List;
@@ -10,6 +11,7 @@ import java.util.List;
 @Getter
 @Setter
 @ToString
+@FieldDefaults(level = AccessLevel.PRIVATE)
 @Entity
 @Table(name = "armor")
 public class Armor {
@@ -20,7 +22,7 @@ public class Armor {
     String name;
     @NonNull
     int defense;
-    @OneToMany(targetEntity = Bear.class, cascade = CascadeType.ALL)
+    /*@OneToMany(targetEntity = Bear.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "bear_fk", referencedColumnName = "id")
-    List<Bear> Bears;
+    List<Bear> Bears;*/
 }

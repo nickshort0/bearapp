@@ -1,5 +1,36 @@
 package com.casestudy.bearapp.models;
 
+import lombok.*;
+import lombok.experimental.FieldDefaults;
+
+import javax.persistence.*;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Set;
+
+@AllArgsConstructor
+@NoArgsConstructor
+@RequiredArgsConstructor
+@Getter
+@Setter
+@ToString
+@FieldDefaults(level = AccessLevel.PRIVATE)
+@Entity
+@Table(name = "users")
 public class User {
-    //TODO: implement user class
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    long id;
+    @NonNull
+    String username;
+    @NonNull
+    String email;
+    @NonNull
+    String password;
+
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH}, fetch = FetchType.EAGER)
+    @JoinTable(name = "user_bears",
+    joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"))
+    Set<Bear> bears = new LinkedHashSet<>();
+
 }
