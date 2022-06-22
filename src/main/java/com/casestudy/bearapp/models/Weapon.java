@@ -11,7 +11,7 @@ import java.util.List;
 @Setter
 @ToString
 @Entity
-@Table(name = "weapon")
+@Table(name = "weapons")
 public class Weapon {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,5 +22,5 @@ public class Weapon {
     int attack;
     @OneToMany(targetEntity = Bear.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "bear_fk", referencedColumnName = "id")
-    List<Bear> Bears;
+    List<Bear> bears;
 }
