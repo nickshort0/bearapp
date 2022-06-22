@@ -17,7 +17,7 @@ public class BearServiceImp implements BearService{
     BearRepository bearRepository;
     @Override
     public List<Bear> getAllBears() {
-        return bearRepository.findAll();
+        return this.bearRepository.findAll();
     }
 
     @Override
@@ -33,7 +33,7 @@ public class BearServiceImp implements BearService{
             bear = optional.get();
         }
         else{
-            throw new RuntimeException("Bear not found for id :: " + id);
+            throw new RuntimeException("Bear not found for id " + id);
         }
         return bear;
     }
