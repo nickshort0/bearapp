@@ -1,6 +1,8 @@
 package com.casestudy.bearapp.service;
 
+import com.casestudy.bearapp.data.ArmorRepository;
 import com.casestudy.bearapp.data.BearRepository;
+import com.casestudy.bearapp.data.WeaponRepository;
 import com.casestudy.bearapp.models.Armor;
 import com.casestudy.bearapp.models.Bear;
 import com.casestudy.bearapp.models.Weapon;
@@ -13,8 +15,17 @@ import java.util.Optional;
 @Service
 public class BearServiceImp implements BearService{
 
-    @Autowired
+
     BearRepository bearRepository;
+    WeaponRepository weaponRepository;
+    ArmorRepository armorRepository;
+    @Autowired
+    public BearServiceImp(BearRepository bearRepository, WeaponRepository weaponRepository, ArmorRepository armorRepository) {
+        this.bearRepository = bearRepository;
+        this.weaponRepository = weaponRepository;
+        this.armorRepository = armorRepository;
+    }
+
     @Override
     public List<Bear> getAllBears() {
         return this.bearRepository.findAll();
@@ -44,22 +55,24 @@ public class BearServiceImp implements BearService{
     }
 
     @Override
-    public void addWeapon(Bear bear, Weapon weapon) {
+    public void addWeapon(Long bear_id, Weapon weapon) {
+        Bear bear = getBearById(bear_id);
+        bear.setWeapon(weapon);
+        bearRepository.save(bear);
+    }
+
+    @Override
+    public void removeWeapon(Long bear_id, Weapon weapon) {
 
     }
 
     @Override
-    public void removeWeapon(Bear bear, Weapon weapon) {
+    public void addArmor(Long bear_id, Armor armor) {
 
     }
 
     @Override
-    public void addArmor(Bear bear, Armor armor) {
-
-    }
-
-    @Override
-    public void removeArmor(Bear bear, Armor armor) {
+    public void removeArmor(Long bear_idr, Armor armor) {
 
     }
 
