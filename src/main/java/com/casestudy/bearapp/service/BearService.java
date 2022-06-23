@@ -15,5 +15,5 @@ public interface BearService {
     void addWeapon(Long bear_id, Weapon weapon);
     void removeWeapon(Long bear_id, Weapon weapon);
     void addArmor(Long bear_id, Armor armor);
-    void removeArmor(Long bear_idr, Armor armor);
+    void removeArmor(Long bear_id);
 }

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+@Controller
 public class ArmorController {
     private ArmorService armorService;
     private BearService bearService;
@@ -22,7 +23,7 @@ public class ArmorController {
         this.bearService = bearService;
     }
 
-    //display list of weapons
+    //display list of armor
     @GetMapping("/armor")
     public String viewHomePage(Model model){
         model.addAttribute("listArmor", armorService.getAllArmors());
@@ -31,8 +32,8 @@ public class ArmorController {
 
 
 
-    @PostMapping("{id}/addArmorToBear")
-    public String addWeaponToBear(@RequestParam("armor") String name, @PathVariable("id") long id, RedirectAttributes model){
+    @GetMapping("{id}/addArmorToBear")
+    public String addArmorToBear(@RequestParam("armor") String name, @PathVariable("id") long id, RedirectAttributes model){
         bearService.addArmor(id, armorService.getArmorByName(name));
         return ("redirect:/");
     }

@@ -52,6 +52,6 @@ public class WeaponServiceImp implements WeaponService{
 
     @Override
     public void deleteWeaponById(long id) {
-
+        weaponRepository.deleteById(id);
     }
 }

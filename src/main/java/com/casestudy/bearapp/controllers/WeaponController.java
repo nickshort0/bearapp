@@ -34,7 +34,7 @@ public class WeaponController {
 
 
 
-    @PostMapping("{id}/addWeaponToBear")
+    @GetMapping("{id}/addWeaponToBear")
     public String addWeaponToBear(@RequestParam("weapon") String name, @PathVariable("id") long id, RedirectAttributes model){
         bearService.addWeapon(id, weaponService.getWeaponByName(name));
         return ("redirect:/");

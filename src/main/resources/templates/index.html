@@ -32,8 +32,8 @@
             <td th:text="${bear.name}"></td>
             <td th:text="${bear.baseAtk}"></td>
             <td th:text="${bear.baseDef}"></td>
-            <td th:text="${bear.weapon.name}"></td>
-            <td th:text="${bear.armor.name}"></td>
+            <td th:text="${bear.weapon?.name} ?: 'None'"></td>
+            <td th:text="${bear.armor?.name} ?: 'None'"></td>
             <td> <a th:href="@{/updateBearForm/{id}(id=${bear.id})}" class="btn btn-primary">Update</a>
                 <a th:href="@{/deleteBear/{id}(id=${bear.id})}" class="btn btn-danger">Delete</a>
             </td>

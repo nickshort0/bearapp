@@ -68,12 +68,16 @@ public class BearServiceImp implements BearService{
 
     @Override
     public void addArmor(Long bear_id, Armor armor) {
-
+        Bear bear = getBearById(bear_id);
+        bear.setArmor(armor);
+        bearRepository.save(bear);
     }
 
     @Override
-    public void removeArmor(Long bear_idr, Armor armor) {
-
+    public void removeArmor(Long bear_id) {
+        Bear bear = getBearById(bear_id);
+        bear.setArmor(null);
+        bearRepository.save(bear);
     }
 
 
