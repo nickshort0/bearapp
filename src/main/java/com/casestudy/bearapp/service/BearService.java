@@ -13,7 +13,7 @@ public interface BearService {
     void deleteBearById(long id);
 
     void addWeapon(Long bear_id, Weapon weapon);
-    void removeWeapon(Long bear_id, Weapon weapon);
+    void removeWeapon(Long bear_id);
     void addArmor(Long bear_id, Armor armor);
     void removeArmor(Long bear_id);
 }
