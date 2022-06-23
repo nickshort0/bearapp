@@ -38,6 +38,19 @@ public class ArmorServiceImp implements ArmorService{
     }
 
     @Override
+    public Armor getArmorByName(String name) {
+        Optional<Armor> optional = armorRepository.findByName(name);
+        Armor armor;
+        if(optional.isPresent()){
+            armor = optional.get();
+        }
+        else{
+            throw new RuntimeException("Armor not found for name " + name);
+        }
+        return armor;
+    }
+
+    @Override
     public void deleteArmorById(long id) {
         this.armorRepository.deleteById(id);
     }

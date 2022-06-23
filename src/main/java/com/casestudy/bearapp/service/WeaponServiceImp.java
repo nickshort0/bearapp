@@ -38,6 +38,19 @@ public class WeaponServiceImp implements WeaponService{
     }
 
     @Override
+    public Weapon getWeaponByName(String name) {
+        Optional<Weapon> optional = weaponRepository.findByName(name);
+        Weapon weapon;
+        if(optional.isPresent()){
+            weapon = optional.get();
+        }
+        else{
+            throw new RuntimeException("Weapon not found for name " + name);
+        }
+        return weapon;
+    }
+
+    @Override
     public void deleteWeaponById(long id) {
 
     }

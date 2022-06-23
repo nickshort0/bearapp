@@ -9,5 +9,7 @@ public interface WeaponService {
     List<Weapon> getAllWeapons();
     void saveWeapon(Weapon weapon);
     Weapon getWeaponById(long id);
+    Weapon getWeaponByName(String name);
     void deleteWeaponById(long id);
+
 }

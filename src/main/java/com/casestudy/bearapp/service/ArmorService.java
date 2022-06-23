@@ -8,5 +8,6 @@ public interface ArmorService {
     List<Armor> getAllArmors();
     void saveArmor(Armor armor);
     Armor getArmorById(long id);
+    Armor getArmorByName(String name);
     void deleteArmorById(long id);
 }

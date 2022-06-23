@@ -52,7 +52,7 @@ public class BearController {
         List<Weapon> weaponsToAdd = weaponService.getAllWeapons();
         //TODO: getUserWeapons in service to remove from this list
         model.addAttribute("weaponsToAdd", weaponsToAdd);
-        return ("new_weapon");
+        return ("add_weapon");
     }
 
 }
