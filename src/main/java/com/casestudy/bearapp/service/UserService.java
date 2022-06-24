@@ -1,6 +1,12 @@
 package com.casestudy.bearapp.service;
 
+import com.casestudy.bearapp.models.Bear;
+import com.casestudy.bearapp.models.User;
+
 public interface UserService {
-    //create user
-    //add bear to bear list
+
+    void saveUser(User user);
+    User getUserById(long id);
+    void addBear(long userId, Bear bear);
+    void removeBear(long userId, long bearId);
 }
