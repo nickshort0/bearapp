@@ -2,7 +2,6 @@ package com.casestudy.bearapp.controllers;
 
 import com.casestudy.bearapp.service.ArmorService;
 import com.casestudy.bearapp.service.BearService;
-import com.casestudy.bearapp.service.WeaponService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,7 +31,7 @@ public class ArmorController {
 
 
 
-    @GetMapping("{id}/addArmorToBear")
+    @PostMapping("{id}/addArmorToBear")
     public String addArmorToBear(@RequestParam("armor") String name, @PathVariable("id") long id, RedirectAttributes model){
         bearService.addArmor(id, armorService.getArmorByName(name));
         return ("redirect:/");

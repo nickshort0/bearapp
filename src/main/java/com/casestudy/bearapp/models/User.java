@@ -5,7 +5,6 @@ import lombok.experimental.FieldDefaults;
 
 import javax.persistence.*;
 import java.util.LinkedHashSet;
-import java.util.List;
 import java.util.Set;
 
 @AllArgsConstructor
@@ -32,5 +31,13 @@ public class User {
     @JoinTable(name = "user_bears",
     joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"))
     Set<Bear> bears = new LinkedHashSet<>();
+
+    public void addBear(Bear bear){
+        bears.add(bear);
+    }
+
+    public void removeBear(Bear bear){
+        bears.remove(bear);
+    }
 
 }
