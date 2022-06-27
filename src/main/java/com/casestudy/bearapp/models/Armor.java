@@ -3,6 +3,7 @@ import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.util.List;
 
 @AllArgsConstructor
@@ -18,9 +19,9 @@ public class Armor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     long id;
-    @NonNull
+    @NonNull @NotBlank
     String name;
-    @NonNull
+    @NonNull @NotBlank
     int defense;
     /*@OneToMany(targetEntity = Bear.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "bear_fk", referencedColumnName = "id")

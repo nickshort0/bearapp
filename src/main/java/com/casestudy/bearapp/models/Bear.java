@@ -26,6 +26,9 @@ public class Bear {
     @NotBlank @NonNull
     int baseDef;
 
+    String description;
+    String image;
+
     /*@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
     @JoinColumn(name = "user_fk", referencedColumnName = "id")
     User user;*/

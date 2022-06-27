@@ -6,12 +6,20 @@ import com.casestudy.bearapp.data.WeaponRepository;
 import com.casestudy.bearapp.models.Armor;
 import com.casestudy.bearapp.models.Bear;
 import com.casestudy.bearapp.models.Weapon;
+import lombok.AccessLevel;
+import lombok.experimental.FieldDefaults;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
+@Slf4j
+@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
+@Transactional(rollbackOn = {DataAccessException.class})
 @Service
 public class BearServiceImp implements BearService{
 
