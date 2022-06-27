@@ -2,14 +2,16 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <meta charset="ISO-8859-1">
-    <title>Employee Management System</title>
+    <meta charset="UTF-8">
+    <title>Bears</title>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-
+    <link th:href="@{/css/navbarstyle.css}" rel="stylesheet">
 </head>
 
 <body>
+<!--navbar-->
+<div th:insert="navbar :: navbar">  </div>
 
 <div class="container my-2">
     <h1>Bear List</h1>
