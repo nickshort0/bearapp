@@ -4,6 +4,8 @@ import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @RequiredArgsConstructor
@@ -17,11 +19,11 @@ public class Bear {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     long id;
-    @NonNull
+    @NotBlank @NonNull
     String name;
-    @NonNull
+    @NotBlank @NonNull
     int baseAtk;
-    @NonNull
+    @NotBlank @NonNull
     int baseDef;
 
     /*@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})

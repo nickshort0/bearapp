@@ -22,11 +22,11 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     long id;
-    @NotBlank(message = "must provide username")
+    @NotBlank(message = "must provide username") @NonNull
     String username;
-    @NotBlank(message = "must provide email") @Email
+    @NotBlank(message = "must provide email") @Email @NonNull
     String email;
-    @Setter(AccessLevel.NONE)
+    @Setter(AccessLevel.NONE) @NonNull
     String password;
 
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH}, fetch = FetchType.EAGER)
