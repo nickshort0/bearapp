@@ -41,7 +41,7 @@ public class UserController {
         return ("redirect:/");
     }
 
-    @PostMapping("{userId}/addBear")
+    @GetMapping("{userId}/addBear")
     public String addBearToUser(@RequestParam("bear") long bearId, @PathVariable("userId") long userId, RedirectAttributes model){
         userService.addBear(userId, bearService.getBearById(bearId));
         return ("redirect:/");

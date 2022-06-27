@@ -13,7 +13,7 @@
     <hr>
     <h2>Add a Bear</h2>
 
-    <form action="#" th:action="@{/addBear}" th:object="${bear}" method="POST">
+    <form action="#" th:action="@{/saveBear}" th:object="${bear}" method="POST">
         <input type="text" th:field="*{name}" placeholder="Bear Name" class="form-control mb-4 col-4">
 
         <input type="text" th:field="*{baseAtk}" placeholder="Base Attack" class="form-control mb-4 col-4">

@@ -4,6 +4,8 @@ import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -20,11 +22,11 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     long id;
-    @NonNull
+    @NotBlank(message = "must provide username")
     String username;
-    @NonNull
+    @NotBlank(message = "must provide email") @Email
     String email;
-    @NonNull
+    @Setter(AccessLevel.NONE)
     String password;
 
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH}, fetch = FetchType.EAGER)
