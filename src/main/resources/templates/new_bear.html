@@ -3,12 +3,16 @@
 
 <head>
     <meta charset="ISO-8859-1">
-    <title>Employee Management System</title>
+    <title>Add Bear</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link th:href="@{/css/navbarstyle.css}" rel="stylesheet">
 </head>
 
 <body>
+<!--navbar-->
+<div th:insert="navbar :: navbar">  </div>
 <div class="container">
+
     <h1>Bear Management System</h1>
     <hr>
     <h2>Add a Bear</h2>

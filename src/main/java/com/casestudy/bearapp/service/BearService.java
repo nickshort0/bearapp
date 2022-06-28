@@ -3,6 +3,7 @@ package com.casestudy.bearapp.service;
 import com.casestudy.bearapp.models.Armor;
 import com.casestudy.bearapp.models.Bear;
 import com.casestudy.bearapp.models.Weapon;
+import org.springframework.data.domain.Page;
 
 import java.util.List;
 
@@ -16,4 +17,5 @@ public interface BearService {
     void removeWeapon(Long bearId);
     void addArmor(Long bearId, Armor armor);
     void removeArmor(Long bearId);
+    Page<Bear> findPaginated(int pageNo, int pageSize);
 }

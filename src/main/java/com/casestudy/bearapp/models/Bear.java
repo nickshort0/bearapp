@@ -21,9 +21,9 @@ public class Bear {
     long id;
     @NotBlank @NonNull
     String name;
-    @NotBlank @NonNull
+    @NonNull
     int baseAtk;
-    @NotBlank @NonNull
+    @NonNull
     int baseDef;
 
     String description;

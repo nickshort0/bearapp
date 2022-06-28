@@ -11,6 +11,9 @@ import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -88,6 +91,12 @@ public class BearServiceImp implements BearService{
         Bear bear = getBearById(bearId);
         bear.setArmor(null);
         bearRepository.save(bear);
+    }
+
+    @Override
+    public Page<Bear> findPaginated(int pageNo, int pageSize) {
+        Pageable pageable = PageRequest.of(pageNo - 1, pageSize);
+        return this.bearRepository.findAll(pageable);
     }
 
 
