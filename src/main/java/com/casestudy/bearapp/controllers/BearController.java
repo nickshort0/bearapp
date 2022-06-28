@@ -21,7 +21,7 @@ public class BearController {
     //display list of bears
     @GetMapping("/bears")
     public String viewBearPage(Model model){
-       return findPage(1, model);
+       return findPage(1, "name", "asc", model);
     }
 
     @GetMapping("/newBearForm")
@@ -40,13 +40,18 @@ public class BearController {
 
     //pagination
     @GetMapping("/page/{pageNo}")
-    public String findPage(@PathVariable(value = "pageNo") int pageNo, Model model){
+    public String findPage(@PathVariable(value = "pageNo") int pageNo,
+                           @RequestParam("sortField") String sortField, @RequestParam("sortDir") String sortDir, Model model){
         int pageSize = 5;
-        Page<Bear> page = bearService.findPaginated(pageNo, pageSize);
+        Page<Bear> page = bearService.findPaginated(pageNo, pageSize, sortField, sortDir);
         List<Bear> listBears = page.getContent();
         model.addAttribute("currentPage", pageNo);
         model.addAttribute("totalPages", page.getTotalPages());
         model.addAttribute("totalItems", page.getTotalElements());
+        model.addAttribute("sortField", sortField);
+        model.addAttribute("sortDir", sortDir);
+        model.addAttribute("reverseSortDir", sortDir.equals("asc") ? "desc" : "asc");
+
         model.addAttribute("listBears", listBears);
         return "bears";
     }

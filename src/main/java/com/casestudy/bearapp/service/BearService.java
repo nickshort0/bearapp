@@ -17,5 +17,5 @@ public interface BearService {
     void removeWeapon(Long bearId);
     void addArmor(Long bearId, Armor armor);
     void removeArmor(Long bearId);
-    Page<Bear> findPaginated(int pageNo, int pageSize);
+    Page<Bear> findPaginated(int pageNo, int pageSize, String sortField, String sortDirection);
 }
