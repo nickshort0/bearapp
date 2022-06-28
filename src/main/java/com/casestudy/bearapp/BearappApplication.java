@@ -24,13 +24,16 @@ public class BearappApplication {
 	}
 
 	private void insertJavaAdvocates(BearRepository repo){
-		repo.save(new Bear("Bear1", 1,1));
-		repo.save(new Bear("Bear2", 2,2));
-		repo.save(new Bear("Bear3", 3,3));
-		repo.save(new Bear("Bear4", 4,4));
-		repo.save(new Bear("Bear5", 5,5));
-		repo.save(new Bear("Bear6", 6,6));
-		repo.save(new Bear("Bear7", 70,100));
+		repo.save(new Bear("Bear 1", 1,1));
+		repo.save(new Bear("Bear 2", 2,2));
+		repo.save(new Bear("Bear 3", 3,3));
+		repo.save(new Bear("Bear 4", 4,4));
+		repo.save(new Bear("Bear 5", 5,5));
+		repo.save(new Bear("Bear 6", 6,6));
+		repo.save(new Bear("Bear 7", 70,100));
+		for(int i = 0; i < 30; i++){
+			repo.save(new Bear("Generic Bear", 10,10));
+		}
 
 
 	}
