@@ -8,6 +8,10 @@ import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -61,5 +65,13 @@ public class WeaponServiceImp implements WeaponService{
     @Override
     public void deleteWeaponById(long id) {
         weaponRepository.deleteById(id);
+    }
+
+    @Override
+    public Page<Weapon> findPaginated(int pageNo, int pageSize, String sortField, String sortDirection) {
+        Sort sort =
+                sortDirection.equalsIgnoreCase(Sort.Direction.ASC.name()) ? Sort.by(sortField).ascending() : Sort.by(sortField).descending();
+        Pageable pageable = PageRequest.of(pageNo - 1, pageSize, sort);
+        return this.weaponRepository.findAll(pageable);
     }
 }
