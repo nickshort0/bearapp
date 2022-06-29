@@ -39,7 +39,7 @@ public class BearController {
     }
 
     //pagination
-    @GetMapping("/page/{pageNo}")
+    @GetMapping("/bears/page/{pageNo}")
     public String findPage(@PathVariable(value = "pageNo") int pageNo,
                            @RequestParam("sortField") String sortField, @RequestParam("sortDir") String sortDir, Model model){
         int pageSize = 5;
