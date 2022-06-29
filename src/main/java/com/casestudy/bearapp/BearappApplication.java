@@ -39,6 +39,9 @@ public class BearappApplication {
 		for(int i = 0; i < 30; i++){
 			wrepo.save(new Weapon("sword", 10));
 		}
+		for(int i = 0; i < 30; i++){
+			arepo.save(new Armor("plate", 10));
+		}
 
 
 	}
