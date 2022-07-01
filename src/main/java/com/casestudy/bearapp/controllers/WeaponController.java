@@ -31,8 +31,13 @@ public class WeaponController {
         return findPage(1, "name", "asc", model);
     }
 
+    @GetMapping("/addWeaponToBear")
+    public String viewWeaponsToAdd(Model model){
+        return findPage(1, "name", "asc", model);
+    }
 
-    @PostMapping("{id}/addWeaponToBear")
+
+    @PostMapping("{id}/saveWeaponToBear")
     public String addWeaponToBear(@RequestParam("weapon") String name, @PathVariable("id") long id, RedirectAttributes model){
         bearService.addWeapon(id, weaponService.getWeaponByName(name));
         return ("redirect:/");

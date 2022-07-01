@@ -6,24 +6,23 @@
 </head>
 <body>
 <!--navbar-->
-<nav th:fragment="navbar" class="navbar">
-    <div class="navbar_container">
-        <ul class="navbar__menu">
-            <li class="navbar__item">
-                <a th:href="@{'/'}" class="navbar__links" id="home-page">Home</a>
-            </li>
-            <li class="navbar__item">
-                <a th:href="@{'/bears'}" class="navbar__links" id="bears-page">Bears</a>
-            </li>
-            <li class="navbar__item">
-                <a href="#" class="navbar__links" id="battle-page">Battle</a>
-            </li>
-            <li class="navbar__btn">
-                <a href="#" class="button" id="signup">Sign up</a>
-            </li>
-        </ul>
+<nav th:fragment="navbar" class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container px-4 px-lg-5">
+        <a class="navbar-brand" href="#page-top">World of Bears</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            Menu
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" th:href="@{'/'}">Home</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{'/bears'}">Bears</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{'/weapons'}">Weapons</a></li>
+            </ul>
+        </div>
     </div>
 </nav>
+
 
 </body>
 </html>
