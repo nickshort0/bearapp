@@ -27,19 +27,19 @@ public class WeaponController {
 
     //display list of weapons
     @GetMapping("/weapons")
-    public String viewHomePage(Model model){
+    public String viewWeaponPage(Model model){
         return findPage(1, "name", "asc", model);
     }
 
-    @GetMapping("/addWeaponToBear")
-    public String viewWeaponsToAdd(Model model){
-        return findPage(1, "name", "asc", model);
+    @GetMapping("/{bearId}/addWeapon")
+    public String viewWeaponsToAdd(@PathVariable("bearId") long bearId, Model model){
+        return findAddWeaponToBearPage(bearId,1, "name", "asc", model);
     }
 
 
-    @PostMapping("{id}/saveWeaponToBear")
-    public String addWeaponToBear(@RequestParam("weapon") String name, @PathVariable("id") long id, RedirectAttributes model){
-        bearService.addWeapon(id, weaponService.getWeaponByName(name));
+    @GetMapping("{bearId}/addWeapon/{weaponId}")
+    public String addWeaponToBear(@PathVariable("weaponId") long weaponId, @PathVariable("bearId") long bearId, RedirectAttributes model){
+        bearService.addWeapon(bearId, weaponService.getWeaponById(weaponId));
         return ("redirect:/");
     }
 
@@ -58,5 +58,21 @@ public class WeaponController {
 
         model.addAttribute("listWeapons", listWeapons);
         return "weapons";
+    }
+    @GetMapping("/{bearId}/weapons/page/{pageNo}")
+    public String findAddWeaponToBearPage(@PathVariable("bearId") long bearId,@PathVariable(value = "pageNo") int pageNo,
+                           @RequestParam("sortField") String sortField, @RequestParam("sortDir") String sortDir, Model model){
+        int pageSize = 5;
+        Page<Weapon> page = weaponService.findPaginated(pageNo, pageSize, sortField, sortDir);
+        List<Weapon> listWeapons = page.getContent();
+        model.addAttribute("currentPage", pageNo);
+        model.addAttribute("totalPages", page.getTotalPages());
+        model.addAttribute("totalItems", page.getTotalElements());
+        model.addAttribute("sortField", sortField);
+        model.addAttribute("sortDir", sortDir);
+        model.addAttribute("reverseSortDir", sortDir.equals("asc") ? "desc" : "asc");
+        model.addAttribute("bearId", bearId);
+        model.addAttribute("listWeapons", listWeapons);
+        return "add_weapon";
     }
 }

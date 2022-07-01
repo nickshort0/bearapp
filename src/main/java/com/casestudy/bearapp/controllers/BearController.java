@@ -1,21 +1,39 @@
 package com.casestudy.bearapp.controllers;
 
 import com.casestudy.bearapp.models.Bear;
+import com.casestudy.bearapp.models.Weapon;
+import com.casestudy.bearapp.service.ArmorService;
 import com.casestudy.bearapp.service.BearService;
+import com.casestudy.bearapp.service.WeaponService;
+import lombok.AccessLevel;
+import lombok.experimental.FieldDefaults;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
-
+@Slf4j
+@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 @Controller
 public class BearController {
 
+
+    BearService bearService;
+    WeaponService weaponService;
+    ArmorService armorService;
+
     @Autowired
-    private BearService bearService;
+    public BearController(BearService bearService, WeaponService weaponService, ArmorService armorService) {
+        this.bearService = bearService;
+        this.weaponService = weaponService;
+        this.armorService = armorService;
+    }
 
 
     //display list of bears
@@ -54,6 +72,14 @@ public class BearController {
 
         model.addAttribute("listBears", listBears);
         return "bears";
+    }
+
+    @GetMapping("/addWeaponToBear/{bearId}")
+    public String addWeaponToBear(@PathVariable long bearId, Model model){
+        model.addAttribute("bear", bearService.getBearById(bearId));
+        Set<Weapon> weaponsToAdd = new HashSet<>(weaponService.getAllWeapons());
+
+        return null;
     }
 
 }
