@@ -4,6 +4,7 @@ import com.casestudy.bearapp.models.Bear;
 import com.casestudy.bearapp.models.Weapon;
 import com.casestudy.bearapp.service.BearService;
 import com.casestudy.bearapp.service.WeaponService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
@@ -13,7 +14,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
-
+@Slf4j
 @Controller
 public class WeaponController {
     private WeaponService weaponService;
@@ -40,7 +41,15 @@ public class WeaponController {
     @GetMapping("{bearId}/addWeapon/{weaponId}")
     public String addWeaponToBear(@PathVariable("weaponId") long weaponId, @PathVariable("bearId") long bearId, RedirectAttributes model){
         bearService.addWeapon(bearId, weaponService.getWeaponById(weaponId));
-        return ("redirect:/");
+        log.info("weapon added");
+        return ("redirect:/{bearId}/addWeapon");
+    }
+
+    @GetMapping("{bearId}/removeWeapon")
+    public String removeWeaponFromBear(@PathVariable("bearId") long bearId, RedirectAttributes model){
+        bearService.removeWeapon(bearId);
+
+        return ("redirect:/{bearId}/addWeapon");
     }
 
     @GetMapping("/weapons/page/{pageNo}")
@@ -72,6 +81,8 @@ public class WeaponController {
         model.addAttribute("sortDir", sortDir);
         model.addAttribute("reverseSortDir", sortDir.equals("asc") ? "desc" : "asc");
         model.addAttribute("bearId", bearId);
+        Bear bear = bearService.getBearById(bearId);
+        model.addAttribute(bear);
         model.addAttribute("listWeapons", listWeapons);
         return "add_weapon";
     }
