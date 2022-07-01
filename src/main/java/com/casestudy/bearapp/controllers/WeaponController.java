@@ -41,14 +41,14 @@ public class WeaponController {
     @GetMapping("{bearId}/addWeapon/{weaponId}")
     public String addWeaponToBear(@PathVariable("weaponId") long weaponId, @PathVariable("bearId") long bearId, RedirectAttributes model){
         bearService.addWeapon(bearId, weaponService.getWeaponById(weaponId));
-        log.info("weapon added");
+        log.info("weapon id " + weaponId + "added to bear id: " + bearId);
         return ("redirect:/{bearId}/addWeapon");
     }
 
     @GetMapping("{bearId}/removeWeapon")
     public String removeWeaponFromBear(@PathVariable("bearId") long bearId, RedirectAttributes model){
         bearService.removeWeapon(bearId);
-
+        log.info("weapon removed from bear id: " + bearId);
         return ("redirect:/{bearId}/addWeapon");
     }
 
