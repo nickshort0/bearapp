@@ -15,7 +15,7 @@ public class BattleController {
 
     @Autowired
     BattleService battleService;
-    @GetMapping("/battle")
+    @GetMapping("/battle/{bear1}/{bear2}")
     public String viewBattlePage(){
 
         return "battle_form";
