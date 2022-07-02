@@ -21,7 +21,7 @@ public class Weapon {
     long id;
     @NonNull @NotBlank
     String name;
-    @NonNull @NotBlank
+    @NonNull
     int attack;
     /*@OneToMany(targetEntity = Bear.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "bear_fk", referencedColumnName = "id")

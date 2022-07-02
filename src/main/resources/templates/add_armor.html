@@ -27,24 +27,18 @@
                 <table border="1" class="table text-white-50 mx-auto mt-2 mb-5">
                     <thead>
                     <tr>
-                        <th><a th:href="@{'/bears/page/' + ${currentPage} + '?sortField=name&sortDir=' + ${reverseSortDir}}">Bear Name</a></th>
-                        <th><a th:href="@{'/bears/page/' + ${currentPage} + '?sortField=baseAtk&sortDir=' + ${reverseSortDir}}">Base Attack</a></th>
-                        <th><a th:href="@{'/bears/page/' + ${currentPage} + '?sortField=baseDef&sortDir=' + ${reverseSortDir}}">Base Defense</a></th>
-                        <th><a th:href="@{'/bears/page/' + ${currentPage} + '?sortField=weapon&sortDir=' + ${reverseSortDir}}">Weapon</a></th>
-                        <th><a th:href="@{'/bears/page/' + ${currentPage} + '?sortField=armor&sortDir=' + ${reverseSortDir}}">Armor</a></th>
+                        <th><a th:href="@{'/' + ${bearId} +'/armor/page/' + ${currentPage} + '?sortField=name&sortDir=' + ${reverseSortDir}}">Armor Name</a></th>
+                        <th><a th:href="@{'/' + ${bearId} +'/armor/page/' + ${currentPage} + '?sortField=defense&sortDir=' + ${reverseSortDir}}">Defense</a></th>
                         <th> Actions </th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="bear : ${listBears}">
-                        <td th:text="${bear.name}"></td>
-                        <td th:text="${bear.baseAtk}"></td>
-                        <td th:text="${bear.baseDef}"></td>
-                        <td th:text="${bear.weapon?.name} ?: 'None'"></td>
-                        <td th:text="${bear.armor?.name} ?: 'None'"></td>
+                    <tr th:each="armor : ${listArmor}">
+                        <td th:text="${armor.name}"></td>
+                        <td th:text="${armor.defense}"></td>
                         <td>
-                            <a th:href="@{'/' + ${bear.id} + '/addWeapon'}" class="btn btn-primary">Add Weapon</a>
-                            <a th:href="@{'/' + ${bear.id} + '/addArmor'}" class="btn btn-primary">Add Armor</a>
+                            <a th:if="${bear.armor?.id != armor.id}" th:href="@{'/' + ${bearId} + '/addArmor/' + ${armor.id}}" class="btn btn-primary">Add</a>
+                            <a th:unless="${bear.armor?.id != armor.id}" th:href="@{'/' + ${bearId} + '/removeArmor/'}" class="btn btn-danger">Remove</a>
                         </td>
                     </tr>
                     </tbody>
@@ -57,28 +51,26 @@
                         </div>
                         <div class="col-sm-4">
                 <span th:each="i : ${#numbers.sequence(1, totalPages)}">
-                    <a th:if="${currentPage != i}" th:href = "@{'/bears/page/' + ${i} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">[[${i}]]</a>
+                    <a th:if="${currentPage != i}" th:href = "@{'/' + ${bearId} + '/armor/page/' + ${i} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">[[${i}]]</a>
                     <span th:unless="${currentPage != i}" >[[${i}]]</span> &nbsp; &nbsp;
                 </span>
                         </div>
                         <div class="col-sm-1" th:if="${currentPage > 1}">
-                            <a th:href="@{'/bears/page/1'+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">First</a>
+                            <a th:href="@{'/' + ${bearId} +'/armor/page/1'+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">First</a>
                         </div>
                         <div class="col-sm-1" th:if="${currentPage > 1}">
-                            <a th:if="${currentPage > 1}" th:href="@{'/bears/page/' + ${currentPage - 1}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Prev</a>
+                            <a th:if="${currentPage > 1}" th:href="@{'/' + ${bearId} +'/armor/page/' + ${currentPage - 1}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Prev</a>
                         </div>
                         <div class="col-sm-1"  th:if="${currentPage < totalPages}">
-                            <a th:href="@{'/bears/page/' + ${currentPage + 1}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Next</a>
+                            <a th:href="@{'/' + ${bearId} +'/armor/page/' + ${currentPage + 1}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Next</a>
                         </div>
                         <div class="col-sm-1" th:if="${currentPage < totalPages}">
-                            <a th:href="@{'/bears/page/' + ${totalPages}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Last</a>
+                            <a th:href="@{'/' + ${bearId} +'/armor/page/' + ${totalPages}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Last</a>
                         </div>
                     </div>
-
-
-                </div>
             </div>
         </div>
+    </div>
     </div>
 </header>
 <!-- Footer-->

@@ -1,6 +1,8 @@
 package com.casestudy.bearapp;
 
+import com.casestudy.bearapp.data.ArmorRepository;
 import com.casestudy.bearapp.data.BearRepository;
+import com.casestudy.bearapp.data.WeaponRepository;
 import com.casestudy.bearapp.models.Armor;
 import com.casestudy.bearapp.models.Bear;
 import com.casestudy.bearapp.models.Weapon;
@@ -17,22 +19,28 @@ public class BearappApplication {
 	}
 
 	@Bean
-	public CommandLineRunner run(BearRepository repo){
+	public CommandLineRunner run(BearRepository brepo, WeaponRepository wrepo, ArmorRepository arepo){
 		return (args -> {
-			insertJavaAdvocates(repo);
+			insertJavaAdvocates(brepo, wrepo, arepo);
 		});
 	}
 
-	private void insertJavaAdvocates(BearRepository repo){
-		repo.save(new Bear("Bear 1", 1,1));
-		repo.save(new Bear("Bear 2", 2,2));
-		repo.save(new Bear("Bear 3", 3,3));
-		repo.save(new Bear("Bear 4", 4,4));
-		repo.save(new Bear("Bear 5", 5,5));
-		repo.save(new Bear("Bear 6", 6,6));
-		repo.save(new Bear("Bear 7", 70,100));
+	private void insertJavaAdvocates(BearRepository brepo, WeaponRepository wrepo, ArmorRepository arepo){
+		brepo.save(new Bear("Bear 1", 1,1));
+		brepo.save(new Bear("Bear 2", 2,2));
+		brepo.save(new Bear("Bear 3", 3,3));
+		brepo.save(new Bear("Bear 4", 4,4));
+		brepo.save(new Bear("Bear 5", 5,5));
+		brepo.save(new Bear("Bear 6", 6,6));
+		brepo.save(new Bear("Bear 7", 70,100));
 		for(int i = 0; i < 30; i++){
-			repo.save(new Bear("Generic Bear", 10,10));
+			brepo.save(new Bear("Generic Bear", 10,10));
+		}
+		for(int i = 0; i < 30; i++){
+			wrepo.save(new Weapon("sword", 10));
+		}
+		for(int i = 0; i < 30; i++){
+			arepo.save(new Armor("plate", 10));
 		}
 
 
