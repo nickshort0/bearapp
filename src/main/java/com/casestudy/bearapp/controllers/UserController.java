@@ -35,10 +35,9 @@ public class UserController {
         return ("new_user");
     }
 
-    @PostMapping("/saveUser")
-    public String saveUser(@ModelAttribute("user") User user){
-        userService.saveUser(user);
-        return ("redirect:/");
+    @GetMapping("/user")
+    public String userPage(){
+        return "user_page";
     }
 
     @GetMapping("{userId}/addBear")

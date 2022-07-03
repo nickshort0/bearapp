@@ -7,6 +7,8 @@ import java.util.List;
 
 @Service
 public class BattleServiceImp implements BattleService{
+
+
     @Override
     public Bear battle(Bear bear1, Bear bear2) {
         //while bear health > 0
