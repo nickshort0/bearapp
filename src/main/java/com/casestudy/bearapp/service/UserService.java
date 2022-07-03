@@ -13,4 +13,5 @@ public interface UserService {
     User getUserById(long id);
     void addBear(long userId, Bear bear);
     void removeBear(long userId, Bear bear);
+
 }
