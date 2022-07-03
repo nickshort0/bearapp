@@ -50,6 +50,8 @@ public class UserController {
 
     @GetMapping("{userId}/removeBear")
     public String removeBearFromUser(@RequestParam("bear") long bearId, @PathVariable("userId") long userId, RedirectAttributes model){
+        bearService.removeArmor(bearId);
+        bearService.removeWeapon(bearId);
         userService.removeBear(userId, bearService.getBearById(bearId));
         return ("redirect:/{userId}/myBears");
     }
