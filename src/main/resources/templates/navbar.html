@@ -18,7 +18,7 @@
                 <li class="nav-item"><a class="nav-link" th:href="@{'/'}">Home</a></li>
                 <li class="nav-item"><a class="nav-link" th:href="@{'/bears'}">Bears</a></li>
                 <li class="nav-item" th:if="${user != null}"><a class="nav-link" th:href="@{'/weapons'}" th:text="${user?.username}"></a></li>
-                <li class="nav-item" th:unless="${user != null}"><a class="nav-link" th:href="@{'/register'}">login</a></li>
+                <li class="nav-item" th:unless="${user != null}"><a class="nav-link" th:href="@{'/login'}">Login</a></li>
             </ul>
         </div>
     </div>

@@ -30,7 +30,7 @@ public class RegistrationController {
     @GetMapping("/login")
     public String login(Model model){
         model.addAttribute("user", new User());
-        return "registration_form";
+        return "login";
     }
 
     @PostMapping("/saveUser")
