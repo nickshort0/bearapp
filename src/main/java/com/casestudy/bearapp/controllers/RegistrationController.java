@@ -39,7 +39,7 @@ public class RegistrationController {
         log.info("User: " + user);
         userService.saveUser(user);
         model.addFlashAttribute("user", userService.getUserById(user.getId()));
-        return "user_page";
+        return "login";
     }
 
 }
