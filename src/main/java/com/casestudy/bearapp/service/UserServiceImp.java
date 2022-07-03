@@ -4,11 +4,13 @@ import com.casestudy.bearapp.data.BearRepository;
 import com.casestudy.bearapp.data.UserRepository;
 import com.casestudy.bearapp.models.Bear;
 import com.casestudy.bearapp.models.User;
+import com.casestudy.bearapp.security.CustomUserDetails;
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -55,6 +57,20 @@ public class UserServiceImp implements UserService{
         else{
             throw new RuntimeException("User not found for id " + id);
         }
+        return user;
+    }
+
+    @Override
+    public User getUserByUsername(String username) {
+        Optional<User> optional = userRepository.findByUsername(username);
+        User user;
+        if(optional.isPresent()){
+            user = optional.get();
+        }
+        else{
+            throw new UsernameNotFoundException("User not found for username: " + username);
+        }
+
         return user;
     }
 

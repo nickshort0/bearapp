@@ -11,6 +11,7 @@ public interface UserService {
     void deleteUser(User user);
     List<User> getAllUsers();
     User getUserById(long id);
+    User getUserByUsername(String username);
     void addBear(long userId, Bear bear);
     void removeBear(long userId, Bear bear);
 
