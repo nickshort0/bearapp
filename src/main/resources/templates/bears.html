@@ -30,8 +30,6 @@
                         <th><a th:href="@{'/bears/page/' + ${currentPage} + '?sortField=name&sortDir=' + ${reverseSortDir}}">Bear Name</a></th>
                         <th><a th:href="@{'/bears/page/' + ${currentPage} + '?sortField=baseAtk&sortDir=' + ${reverseSortDir}}">Base Attack</a></th>
                         <th><a th:href="@{'/bears/page/' + ${currentPage} + '?sortField=baseDef&sortDir=' + ${reverseSortDir}}">Base Defense</a></th>
-                        <th><a th:href="@{'/bears/page/' + ${currentPage} + '?sortField=weapon&sortDir=' + ${reverseSortDir}}">Weapon</a></th>
-                        <th><a th:href="@{'/bears/page/' + ${currentPage} + '?sortField=armor&sortDir=' + ${reverseSortDir}}">Armor</a></th>
                         <th> Actions </th>
                     </tr>
                     </thead>
@@ -40,11 +38,8 @@
                         <td th:text="${bear.name}"></td>
                         <td th:text="${bear.baseAtk}"></td>
                         <td th:text="${bear.baseDef}"></td>
-                        <td th:text="${bear.weapon?.name} ?: 'None'"></td>
-                        <td th:text="${bear.armor?.name} ?: 'None'"></td>
                         <td>
-                            <a th:href="@{'/' + ${bear.id} + '/addWeapon'}" class="btn btn-primary">Add Weapon</a>
-                            <a th:href="@{'/' + ${bear.id} + '/addArmor'}" class="btn btn-primary">Add Armor</a>
+                            <a th:href="@{'/' + ${session.activeUser.id} + '/addBear?bear=' + ${bear.id}}" class="btn btn-primary">Add Bear</a>
                         </td>
                     </tr>
                     </tbody>

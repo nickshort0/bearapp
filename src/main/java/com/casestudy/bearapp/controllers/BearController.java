@@ -74,12 +74,12 @@ public class BearController {
         return "bears";
     }
 
-    @GetMapping("/addWeaponToBear/{bearId}")
+    /*@GetMapping("/addWeaponToBear/{bearId}")
     public String addWeaponToBear(@PathVariable long bearId, Model model){
         model.addAttribute("bear", bearService.getBearById(bearId));
         Set<Weapon> weaponsToAdd = new HashSet<>(weaponService.getAllWeapons());
 
         return null;
-    }
+    }*/
 
 }
