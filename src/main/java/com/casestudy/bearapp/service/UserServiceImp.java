@@ -4,7 +4,6 @@ import com.casestudy.bearapp.data.BearRepository;
 import com.casestudy.bearapp.data.UserRepository;
 import com.casestudy.bearapp.models.Bear;
 import com.casestudy.bearapp.models.User;
-import com.casestudy.bearapp.security.CustomUserDetails;
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;

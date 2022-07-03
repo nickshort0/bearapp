@@ -2,7 +2,6 @@ package com.casestudy.bearapp.service;
 
 import com.casestudy.bearapp.data.UserRepository;
 import com.casestudy.bearapp.models.User;
-import com.casestudy.bearapp.models.Weapon;
 import com.casestudy.bearapp.security.CustomUserDetails;
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;

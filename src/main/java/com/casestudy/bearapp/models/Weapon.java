@@ -4,7 +4,6 @@ import lombok.experimental.FieldDefaults;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
-import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -23,7 +22,4 @@ public class Weapon {
     String name;
     @NonNull
     int attack;
-    /*@OneToMany(targetEntity = Bear.class, cascade = CascadeType.ALL)
-    @JoinColumn(name = "bear_fk", referencedColumnName = "id")
-    List<Bear> bears;*/
 }

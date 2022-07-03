@@ -1,6 +1,5 @@
 package com.casestudy.bearapp.controllers;
 
-import com.casestudy.bearapp.models.Bear;
 import com.casestudy.bearapp.models.User;
 import com.casestudy.bearapp.service.BearService;
 import com.casestudy.bearapp.service.UserService;
@@ -8,7 +7,6 @@ import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;

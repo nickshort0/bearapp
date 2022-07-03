@@ -1,7 +1,6 @@
 package com.casestudy.bearapp.service;
 
 import com.casestudy.bearapp.models.Armor;
-import com.casestudy.bearapp.models.Weapon;
 import org.springframework.data.domain.Page;
 
 import java.util.List;

@@ -1,9 +1,8 @@
 package com.casestudy.bearapp.models;
 
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
 import lombok.*;
 import lombok.experimental.FieldDefaults;
-import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.*;

@@ -2,9 +2,6 @@ package com.casestudy.bearapp.service;
 
 import com.casestudy.bearapp.data.ArmorRepository;
 import com.casestudy.bearapp.models.Armor;
-import com.casestudy.bearapp.models.Bear;
-import lombok.AccessLevel;
-import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;

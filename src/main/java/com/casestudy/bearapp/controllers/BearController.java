@@ -1,7 +1,6 @@
 package com.casestudy.bearapp.controllers;
 
 import com.casestudy.bearapp.models.Bear;
-import com.casestudy.bearapp.models.Weapon;
 import com.casestudy.bearapp.service.ArmorService;
 import com.casestudy.bearapp.service.BearService;
 import com.casestudy.bearapp.service.WeaponService;
@@ -13,10 +12,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
+
 
 @Slf4j
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
@@ -74,12 +71,5 @@ public class BearController {
         return "bears";
     }
 
-    /*@GetMapping("/addWeaponToBear/{bearId}")
-    public String addWeaponToBear(@PathVariable long bearId, Model model){
-        model.addAttribute("bear", bearService.getBearById(bearId));
-        Set<Weapon> weaponsToAdd = new HashSet<>(weaponService.getAllWeapons());
-
-        return null;
-    }*/
 
 }
