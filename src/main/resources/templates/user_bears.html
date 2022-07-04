@@ -14,6 +14,7 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="/css/styles.css" rel="stylesheet" />
+    <link href="/css/bearstyle.css" rel="stylesheet" />
 </head>
 <body id="page-top">
 <!--Navbar-->
@@ -37,7 +38,37 @@
                     </thead>
                     <tbody>
                     <tr th:each="bear : ${user.bears}">
-                        <td th:text="${bear.name}"></td>
+                        <td><a href="" data-bs-toggle="modal" th:data-bs-target="|#exampleModalCenter${bear.id}|" th:text="${bear.name}"></a></td>
+                        <!-- Modal -->
+                        <div class="modal fade" th:id="|exampleModalCenter${bear.id}|" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLongTitle" th:text="${bear.name}"></h5>
+                                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <span th:if="${bear.image != null}">
+                                        <img th:src="${bear.image}">
+                                        </span>
+                                        <span th:unless="${bear.image != null}">
+                                        <img class="img-fluid" src="/assets/img/awoo.jpg">
+                                        </span>
+                                        <span th:if="${bear.description!= null}">
+                                            <h5 th:text="${bear.description}"></h5>
+                                        </span>
+                                        <span th:unless="${bear.description != null}">
+                                            <h5>This is a bear</h5>
+                                        </span>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <td th:text="${bear.baseAtk}"></td>
                         <td th:text="${bear.baseDef}"></td>
                         <td th:text="${bear.weapon?.name} ?: 'None'"></td>

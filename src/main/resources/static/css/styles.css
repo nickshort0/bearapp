@@ -239,7 +239,7 @@ sup {
 }
 
 a {
-  color: #64a19d;
+  color: #a4fff9;
   text-decoration: underline;
 }
 a:hover {
@@ -7938,8 +7938,8 @@ textarea.form-control-lg {
 }
 
 .text-white {
-  --bs-text-opacity: 1;
-  color: rgba(var(--bs-white-rgb), var(--bs-text-opacity)) !important;
+      --bs-text-opacity: 1;
+      color: rgb(255 255 255) !important;
 }
 
 .text-body {
@@ -7958,8 +7958,8 @@ textarea.form-control-lg {
 }
 
 .text-white-50 {
-  --bs-text-opacity: 1;
-  color: rgba(255, 255, 255, 0.5) !important;
+      --bs-text-opacity: 1;
+      color: rgb(255 255 255) !important;
 }
 
 .text-reset {
