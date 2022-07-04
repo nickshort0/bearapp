@@ -24,6 +24,7 @@
         <div class="d-flex justify-content-center">
             <div class="text-center">
                 <h1 class="mx-auto my-0 text-uppercase">Login</h1>
+                <h2 th:if="${param.error}" class="text-danger">No such account exists</h2>
                 <form th:action="@{/login/processing}" method="post" class="form-signup">
                     <div class="input-group mb-3">
                     <input type="text" name="username" class="form-control" placeholder="Username" th:field="*{user.username}" required/>
