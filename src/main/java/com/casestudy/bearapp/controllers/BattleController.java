@@ -33,11 +33,11 @@ public class BattleController {
     }
 
     @PostMapping("/battleResults")
-    public String battle(@RequestParam("bear1") long id1, @RequestParam("bear1") long id2, Model model){
+    public String battle(@RequestParam("bear1") long id1, @RequestParam("bear2") long id2, Model model){
         Bear bear1 = bearService.getBearById(id1);
         Bear bear2 = bearService.getBearById(id2);
         Bear winner = battleService.battle(bear1, bear2);
-        model.addAttribute(winner);
+        model.addAttribute("winner", winner);
         return ("battle_result");
     }
 
