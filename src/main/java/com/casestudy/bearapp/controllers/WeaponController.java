@@ -38,24 +38,24 @@ public class WeaponController {
     }
 
 
-    @GetMapping("{bearId}/addWeapon/{weaponId}")
+    @GetMapping("{userId}/{bearId}/addWeapon/{weaponId}")
     public String addWeaponToBear(@PathVariable("weaponId") long weaponId, @PathVariable("bearId") long bearId, RedirectAttributes model){
         bearService.addWeapon(bearId, weaponService.getWeaponById(weaponId));
         log.info("weapon id " + weaponId + "added to bear id: " + bearId);
-        return ("redirect:/{bearId}/addWeapon");
+        return ("redirect:/{userId}/myBears");
     }
 
-    @GetMapping("{bearId}/removeWeapon")
+    @GetMapping("{userId}/{bearId}/removeWeapon")
     public String removeWeaponFromBear(@PathVariable("bearId") long bearId, RedirectAttributes model){
         bearService.removeWeapon(bearId);
         log.info("weapon removed from bear id: " + bearId);
-        return ("redirect:/{bearId}/addWeapon");
+        return ("redirect:/{userId}/myBears");
     }
 
     @GetMapping("/weapons/page/{pageNo}")
     public String findPage(@PathVariable(value = "pageNo") int pageNo,
                            @RequestParam("sortField") String sortField, @RequestParam("sortDir") String sortDir, Model model){
-        int pageSize = 5;
+        int pageSize = 7;
         Page<Weapon> page = weaponService.findPaginated(pageNo, pageSize, sortField, sortDir);
         List<Weapon> listWeapons = page.getContent();
         model.addAttribute("currentPage", pageNo);
@@ -71,7 +71,7 @@ public class WeaponController {
     @GetMapping("/{bearId}/weapons/page/{pageNo}")
     public String findAddWeaponToBearPage(@PathVariable("bearId") long bearId,@PathVariable(value = "pageNo") int pageNo,
                            @RequestParam("sortField") String sortField, @RequestParam("sortDir") String sortDir, Model model){
-        int pageSize = 5;
+        int pageSize = 7;
         Page<Weapon> page = weaponService.findPaginated(pageNo, pageSize, sortField, sortDir);
         List<Weapon> listWeapons = page.getContent();
         model.addAttribute("currentPage", pageNo);

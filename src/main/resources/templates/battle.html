@@ -14,6 +14,7 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="/css/styles.css" rel="stylesheet" />
+    <link href="/css/bearstyle.css" rel="stylesheet" />
 </head>
 <body id="page-top">
 <!--Navbar-->
@@ -24,13 +25,18 @@
         <div class="d-flex justify-content-center">
             <div class="text-center">
                 <h2 class="text-white-50 text-uppercase">Select Your Bear</h2>
-                <form th:action="@{/battleResults}" method="post" class="form-signup">
-                    <select name = "bear1" id="bear1">
+                <form th:action="@{/battleResults}" method="post" class="battle-form">
+                    <div class="input-group mb-3">
+                    <select name = "bear1" id="bear1" required>
                         <option th:each="bear : ${user.bears}" th:value = "${bear.id}" th:text="${bear.name}" selected></option>
                     </select>
-                    <select name = "bear2" id="bear2">
+                    </div>
+                    <h2 class="text-danger">VS.</h2>
+                    <div class="input-group mb-3">
+                    <select name = "bear2" id="bear2" required>
                         <option th:each="bear : ${user.bears}" th:value = "${bear.id}" th:text="${bear.name}" selected></option>
                     </select>
+                    </div>
                     <input type="submit" value="Battle" class="btn btn-outline-secondary" id="button-addon2"></input>
                 </form>
             </div>

@@ -23,7 +23,7 @@
     <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
         <div class="d-flex justify-content-center">
             <div class="text-center">
-                <h1 class="mx-auto my-0 text-uppercase">Bears</h1>
+                <h1 class="mx-auto my-0 text-uppercase">Armor</h1>
                 <table border="1" class="table text-white-50 mx-auto mt-2 mb-5">
                     <thead>
                     <tr>
@@ -37,8 +37,8 @@
                         <td th:text="${armor.name}"></td>
                         <td th:text="${armor.defense}"></td>
                         <td>
-                            <a th:if="${bear.armor?.id != armor.id}" th:href="@{'/' + ${bearId} + '/addArmor/' + ${armor.id}}" class="btn btn-primary">Add</a>
-                            <a th:unless="${bear.armor?.id != armor.id}" th:href="@{'/' + ${bearId} + '/removeArmor/'}" class="btn btn-danger">Remove</a>
+                            <a th:if="${bear.armor?.id != armor.id}" th:href="@{'/' + ${session.activeUser.id} + '/' + ${bearId} + '/addArmor/' + ${armor.id}}" class="btn btn-primary">Add</a>
+                            <a th:unless="${bear.armor?.id != armor.id}" th:href="@{'/' + ${session.activeUser.id} + '/' + ${bearId} + '/removeArmor/'}" class="btn btn-danger">Remove</a>
                         </td>
                     </tr>
                     </tbody>
@@ -46,9 +46,6 @@
 
                 <div th:if = "${totalPages > 1}">
                     <div class = "row col-sm-10">
-                        <div class="col-sm-2">
-                            Total Rows: [[${totalItems}]]
-                        </div>
                         <div class="col-sm-4">
                 <span th:each="i : ${#numbers.sequence(1, totalPages)}">
                     <a th:if="${currentPage != i}" th:href = "@{'/' + ${bearId} + '/armor/page/' + ${i} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">[[${i}]]</a>

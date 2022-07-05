@@ -5,7 +5,22 @@
 */
 //
 // Scripts
-// 
+//
+
+function validatePassword(password){
+    //password requires a number and a special char
+    var pattern =  /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{5,15}$/;
+    if(password.value.match(pattern))
+    {
+    alert('Cool cool')
+    return true;
+    }
+    else
+    {
+    alert('Wrong...!')
+    return false;
+    }
+}
 
 window.addEventListener('DOMContentLoaded', event => {
 

@@ -42,24 +42,24 @@ public class ArmorController {
     }
 
 
-    @GetMapping("{bearId}/addArmor/{armorId}")
+    @GetMapping("{userId}/{bearId}/addArmor/{armorId}")
     public String addArmorToBear(@PathVariable("armorId") long armorId, @PathVariable("bearId") long bearId, RedirectAttributes model){
         bearService.addArmor(bearId, armorService.getArmorById(armorId));
         log.info("armor id " + armorId + "added to bear id: " + bearId);
-        return ("redirect:/{bearId}/addArmor");
+        return ("redirect:/{userId}/myBears");
     }
 
-    @GetMapping("{bearId}/removeArmor")
+    @GetMapping("{userId}/{bearId}/removeArmor")
     public String removeArmorFromBear(@PathVariable("bearId") long bearId, RedirectAttributes model){
         bearService.removeArmor(bearId);
         log.info("armor removed from bear id: " + bearId);
-        return ("redirect:/{bearId}/addArmor");
+        return ("redirect:/{userId}/myBears");
     }
 
     @GetMapping("/armor/page/{pageNo}")
     public String findPage(@PathVariable(value = "pageNo") int pageNo,
                            @RequestParam("sortField") String sortField, @RequestParam("sortDir") String sortDir, Model model){
-        int pageSize = 5;
+        int pageSize = 7;
         Page<Armor> page = armorService.findPaginated(pageNo, pageSize, sortField, sortDir);
         List<Armor> listArmor = page.getContent();
         model.addAttribute("currentPage", pageNo);

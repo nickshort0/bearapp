@@ -49,7 +49,7 @@
                                     </div>
                                     <div class="modal-body">
                                         <span th:if="${bear.image != null}">
-                                        <img th:src="${bear.image}">
+                                        <img class="img-fluid" th:src="${bear.image}">
                                         </span>
                                         <span th:unless="${bear.image != null}">
                                         <img class="img-fluid" src="/assets/img/awoo.jpg">
