@@ -23,16 +23,7 @@
     <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
         <div class="d-flex justify-content-center">
             <div class="text-center">
-                <h2 class="text-white-50 text-uppercase">Select Your Bear</h2>
-                <form th:action="@{/battleResults}" method="post" class="form-signup">
-                    <select name = "bear1" id="bear1">
-                        <option th:each="bear : ${user.bears}" th:value = "${bear.id}" th:text="${bear.name}" selected></option>
-                    </select>
-                    <select name = "bear2" id="bear2">
-                        <option th:each="bear : ${user.bears}" th:value = "${bear.id}" th:text="${bear.name}" selected></option>
-                    </select>
-                    <input type="submit" value="Battle" class="btn btn-outline-secondary" id="button-addon2"></input>
-                </form>
+                <h2 class="mx-auto my-0 text-uppercase" th:text="'Winner: ' + ${winner.name} "></h2>
             </div>
         </div>
     </div>
