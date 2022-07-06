@@ -10,6 +10,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Profile;
 
 @SpringBootApplication
 public class BearappApplication {
@@ -18,7 +19,7 @@ public class BearappApplication {
 		SpringApplication.run(BearappApplication.class, args);
 	}
 
-	@Bean
+	@Bean @Profile("!test")
 	public CommandLineRunner run(BearRepository brepo, WeaponRepository wrepo, ArmorRepository arepo){
 		return (args -> {
 			insertJavaAdvocates(brepo, wrepo, arepo);

@@ -5,6 +5,7 @@ import lombok.experimental.FieldDefaults;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.util.Objects;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -45,5 +46,18 @@ public class Bear {
         this.baseDef = baseDef;
         this.weapon = weapon;
         this.armor = armor;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Bear bear = (Bear) o;
+        return id == bear.id && baseAtk == bear.baseAtk && baseDef == bear.baseDef && name.equals(bear.name) && Objects.equals(description, bear.description) && Objects.equals(image, bear.image) && Objects.equals(weapon, bear.weapon) && Objects.equals(armor, bear.armor);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, baseAtk, baseDef, description, image, weapon, armor);
     }
 }
