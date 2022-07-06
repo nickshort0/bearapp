@@ -32,7 +32,11 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin().loginPage("/login").usernameParameter("username").passwordParameter("password")
                 .loginProcessingUrl("/login/processing").defaultSuccessUrl("/")
-                .failureUrl("/login?error=true").permitAll();
+                .failureUrl("/login?error=true").permitAll()
+                .and()
+                .logout()
+                .logoutSuccessUrl("/")
+                .invalidateHttpSession(true);
 
     }
 }

@@ -57,7 +57,7 @@ public class BearController {
     @GetMapping("/bears/page/{pageNo}")
     public String findPage(@PathVariable(value = "pageNo") int pageNo,
                            @RequestParam("sortField") String sortField, @RequestParam("sortDir") String sortDir, Model model){
-        int pageSize = 5;
+        int pageSize = 7;
         Page<Bear> page = bearService.findPaginated(pageNo, pageSize, sortField, sortDir);
         List<Bear> listBears = page.getContent();
         model.addAttribute("currentPage", pageNo);

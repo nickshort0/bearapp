@@ -27,6 +27,7 @@ public class UserController {
     }
 
 
+    //create user?
     @GetMapping("/newUserForm")
     public String showNewUserForm(Model model){
         //create model attribute to bind form data
@@ -35,17 +36,21 @@ public class UserController {
         return ("new_user");
     }
 
+    //display user page
     @GetMapping("/user")
     public String userPage(){
         return "user_page";
     }
 
+
+    //add bear to user
     @GetMapping("{userId}/addBear")
     public String addBearToUser(@RequestParam("bear") long bearId, @PathVariable("userId") long userId, RedirectAttributes model){
         userService.addBear(userId, bearService.getBearById(bearId));
         return ("redirect:/{userId}/myBears");
     }
 
+    //remove bear from user
     @GetMapping("{userId}/removeBear")
     public String removeBearFromUser(@RequestParam("bear") long bearId, @PathVariable("userId") long userId, RedirectAttributes model){
         bearService.removeArmor(bearId);
@@ -54,7 +59,7 @@ public class UserController {
         return ("redirect:/{userId}/myBears");
     }
 
-    //display list of bears
+    //display list of user bears
     @GetMapping("{userId}/myBears")
     public String viewUserBearPage(@PathVariable("userId") long userId, Model model){
         User user = userService.getUserById(userId);

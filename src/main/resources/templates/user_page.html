@@ -23,8 +23,11 @@
     <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
         <div class="d-flex justify-content-center">
             <div class="text-center">
-                <h2><a th:href="@{'/' + ${session.activeUser.id} + '/myBears'}">My Bears</a></h2>
-                <h2><a th:href="@{'/' + ${session.activeUser.id} + '/battle'}">Battle</a></h2>
+                <h2><a class="text-white-50" th:href="@{'/' + ${session.activeUser.id} + '/myBears'}">My Bears</a></h2>
+                <h2><a class="text-white-50" th:href="@{'/' + ${session.activeUser.id} + '/battle'}">Battle</a></h2>
+                <form name="logoutForm" th:action="@{/logout}" method="post">
+                    <input class="btn btn-outline-secondary" id="button-addon2" type="submit" value="Log Out" />
+                </form>
             </div>
         </div>
     </div>
@@ -34,7 +37,6 @@
 <!-- Bootstrap core JS-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Core theme JS-->
-<script src="js/scripts.js"></script>
-<script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+<script src="/js/scripts.js"></script>
 </body>
 </html>

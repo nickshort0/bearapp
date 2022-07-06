@@ -21,18 +21,21 @@ public class RegistrationController {
         this.userService = userService;
     }
 
+    //display register page
     @GetMapping("/register")
     public String registerUser(Model model){
         model.addAttribute("user", new User());
         return "registration_form";
     }
 
+    //display login page
     @GetMapping("/login")
     public String login(Model model){
         model.addAttribute("user", new User());
         return "login";
     }
 
+    //save user to db
     @PostMapping("/saveUser")
     public String saveUser(RedirectAttributes model, @ModelAttribute("user") User user){
         user.setRole("USER");

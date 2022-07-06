@@ -14,6 +14,7 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="/css/styles.css" rel="stylesheet" />
+    <link href="/css/bearstyle.css" rel="stylesheet" />
 </head>
 <body id="page-top">
 <!--Navbar-->
@@ -23,21 +24,21 @@
     <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
         <div class="d-flex justify-content-center">
             <div class="text-center">
-                <h1 class="mx-auto my-0 text-uppercase"></h1>
-                <form th:action="@{/battleResult}" method="post" class="form-signup">
-                    <label for="user-bears">Favorite Shrek Motion Picture:</label><br>
-                    <select name = "user-bears" id="user-bears">
-                        <span th:each="bear : ${listUserBears}}"></span>
-                        <option th:value="${bear.name}" th:text="${bear.name}" th:id="${bear.id}}"></option>
+                <h2 class="text-white-50 text-uppercase">Select Your Bear</h2>
+                <form th:action="@{/battleResults}" method="post" class="battle-form">
+                    <div class="input-group mb-3">
+                    <select name = "bear1" id="bear1" required>
+                        <option th:each="bear : ${user.bears}" th:value = "${bear.id}" th:text="${bear.name}" selected></option>
                     </select>
-                    <h1 class="mx-auto my-0 text-uppercase">VS.</h1>
-                    <select name = "cpu-bears" id="cpu-bears">
-                        <span th:each="bear : ${listCPUBears}}"></span>
-                        <option th:value="${bear.name}" th:text="${bear.name}" th:id="${bear.id}}"></option>
+                    </div>
+                    <h2 class="text-danger">VS.</h2>
+                    <div class="input-group mb-3">
+                    <select name = "bear2" id="bear2" required>
+                        <option th:each="bear : ${user.bears}" th:value = "${bear.id}" th:text="${bear.name}" selected></option>
                     </select>
-                    <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Submit</button>
+                    </div>
+                    <input type="submit" value="Battle" class="btn btn-outline-secondary" id="button-addon2"></input>
                 </form>
-
             </div>
         </div>
     </div>
@@ -47,11 +48,6 @@
 <!-- Bootstrap core JS-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Core theme JS-->
-<script src="js/scripts.js"></script>
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-<!-- * *                               SB Forms JS                               * *-->
-<!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-<script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+<script src="/js/scripts.js"></script>
 </body>
 </html>

@@ -8,3 +8,24 @@ a {
     color: rgb(255 255 255) !important;
 }
 
+.battle-form{
+        font-size: 1.5rem;
+        color:white;
+        border-color: black;
+        border: 3px solid white;
+        border-radius: 4px;
+        box-sizing: border-box;
+        padding: 12px 20px;
+        margin: 8px 0;
+    }
+ select {
+    display: block;
+    margin: 0 auto;
+    }
+
+ .battle-result-img, h2 {
+   display: block;
+   margin-left: auto;
+   margin-right: auto;
+   width: 50%;
+ }

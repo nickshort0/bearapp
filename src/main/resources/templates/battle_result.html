@@ -14,6 +14,7 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="/css/styles.css" rel="stylesheet" />
+    <link href="/css/bearstyle.css" rel="stylesheet" />
 </head>
 <body id="page-top">
 <!--Navbar-->
@@ -23,19 +24,9 @@
     <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
         <div class="d-flex justify-content-center">
             <div class="text-center">
-                <h1 class="mx-auto my-0 text-uppercase">Login</h1>
-                <h2 th:if="${param.error}" class="text-danger">No such account exists</h2>
-                <form th:action="@{/login/processing}" method="post" class="form-signup">
-                    <div class="input-group mb-3">
-                    <input type="text" name="username" class="form-control" placeholder="Username" th:field="*{user.username}" required/>
-                    </div>
-                    <div class="input-group mb-3">
-                        <input type="password" name="password" class="form-control" placeholder="Password"
-                               aria-label="Password" aria-describedby="button-addon2" th:field="*{user.password}" required>
-                    </div>
-                        <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Submit</button>
-                </form>
-                <h2 class="text-white-50 mx-auto mt-2 mb-5">Don't have an account? <a th:href="@{/register}">Sign up</a></h2>
+                <h2 class="text-success text-uppercase" th:text="'Winner: ' + ${winner.name} "></h2>
+                <img class="img-fluid battle-result-img" th:src="${winner.image}"/><br/>
+
             </div>
         </div>
     </div>
@@ -46,6 +37,5 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Core theme JS-->
 <script src="/js/scripts.js"></script>
-
 </body>
 </html>
