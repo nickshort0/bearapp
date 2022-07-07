@@ -20,7 +20,14 @@ This is an application about bears.
 * Home page
   - User can learn what bears are and navigate to other pages
 
+* Bear
+  - Displays paginated sortable table containing all bears in the database. User can click on the bear to show bootstrap modal that has bear image and description. If user is logged in the 'add bear' column is displayed and user can add bear to profile.
 
+* Login
+  - User can login to account. Link to create account is also shown. If no account exists, error message is displayed.
+
+* Register
+  - Allows creation of account using username, email, and password
 
 ## ERD
 
