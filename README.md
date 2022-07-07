@@ -32,6 +32,17 @@ This is an application about bears.
 * User
   - Show links to user action pages - my bears, create bear, battle, as well as logout button
 
+* My Bears
+  - Shows table of bears that user has added to profile, with links to add weapons and armor to the bears, remove weapons and armor, and remove the bear from profile
+
+* Add Weapon
+  - Displays paginated sortable table containing all weapons in the database. User can add weapon to the bear that was selected in previous page
+
+* Add Armor
+  - Displays paginated sortable table containing all armor in the database. User can add weapon to the bear that was selected in previous page
+
+
+
 ## ERD
 
 ![erd](https://user-images.githubusercontent.com/103460832/177068921-bd3c42b1-1060-4184-b2b6-1f4549af28b1.png)
