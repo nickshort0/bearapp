@@ -40,6 +40,12 @@ This is an application about bears.
 
 * Add Armor
   - Displays paginated sortable table containing all armor in the database. User can add weapon to the bear that was selected in previous page
+ 
+* Battle
+  - Select bears from user profile to battle
+  
+* Battle Result
+  - Shows which bear won the battle
 
 
 
